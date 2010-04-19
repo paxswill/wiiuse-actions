@@ -38,3 +38,11 @@ cell* peek(queue *q){
 cell peek_b(queue *q, int back_num){
 	
 }
+
+void print(queue *q){
+	printf("(x, y, z)\n");
+	for(int i = 0; i < q->capacity; ++i){
+		printf("(%f, %f, %f)\n", q->queue_mem[i].x_accel, q->queue_mem[i].y_accel, q->queue_mem[i].z_accel);
+	}
+	printf("\n\n");
+}
