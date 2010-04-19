@@ -7,22 +7,10 @@ performance of the program, so we're using a fixed length queue
 that uses a preallocated bank of memory
 */ 
 
-typedef struct cell_t{
-	double x_accel;
-	double y_accel;
-	double z_accel;
-} cell;
-
-typedef struct queue_t{
-	cell *queue_mem;
-	int curr_offset;
-	int capacity;	
-} queue;
-
 queue* init(int c){
 	queue* to_return;
 	//allocate the memory
-	to_return -> queue_mem = (cell*)malloc(sizeof(cell) * capacity);
+	to_return -> queue_mem = (cell*)malloc(sizeof(cell) * c);
 	//check to make sure it was allocated (malloc returns NULL when it fails)
 	if(to_return -> queue_mem == NULL){
 		//failure
