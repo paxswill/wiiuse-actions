@@ -1,5 +1,5 @@
 all: main.o wiimote_funcs.o buffer.o
-	clang -lm -lwiiuse -g main.o wiimote_funcs.o -o wiiuse-basic
+	clang -lm -lwiiuse -g main.o wiimote_funcs.o buffer.o -o wiiuse-basic
 
 # Main
 main.o: main.c
@@ -11,11 +11,15 @@ wiimote_funcs.o: wiimote_funcs.c
 
 # The low-latency buffer
 buffer.o: buffer.h buffer.c
-	clang -std=c99 -Wall -g -c 
+	clang -std=c99 -Wall -g -c buffer.c -o buffer.o
 
 # Runs make on the VM on my machine
 remote:
 	ssh -p 2222 localhost 'cd /mnt/hgfs/CS350/wiiuse-basic/; make all'
+
+# Remote clean
+rclean:
+	ssh -p 2222 localhost 'cd /mnt/hgfs/CS350/wiiuse-basic/; make clean'
 
 # Clean up
 clean:
