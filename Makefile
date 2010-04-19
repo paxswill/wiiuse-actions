@@ -7,7 +7,7 @@ main.o: main.c
 
 # The wiimote wrapper functions
 wiimote_funcs.o: wiimote_funcs.c
-	clang -std=c99 -Wall -g -c wiimote_funcs.c -o wiimote_funcs.	
+	clang -std=c99 -Wall -g -c wiimote_funcs.c -o wiimote_funcs.o	
 
 # The low-latency buffer
 buffer.o: buffer.h buffer.c
