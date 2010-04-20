@@ -6,7 +6,7 @@
 
 
 //find the 
-wiimote** find_wiimote(int num);
+wiimote** find_wiimotes(int num);
 
 
 

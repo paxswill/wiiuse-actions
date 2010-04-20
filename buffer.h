@@ -29,7 +29,8 @@ typedef struct cell_t{
 typedef struct queue_t{
 	cell *queue_mem;
 	int curr_offset;
-	int capacity;	
+	int capacity;
+	//TODO: Add a mutex here	
 } queue;
 
 //initialization function
