@@ -1,9 +1,9 @@
 #include "wiimote_funcs.h"
 
 //Various wiimote functions
-wiimote** findWiimote(){
+wiimote** find_wiimote(int num){
 	//where to store the wiimotes
-	int maxWiimotes = 1;
+	int maxWiimotes = num;
 	wiimote** wm = wiiuse_init(maxWiimotes);
 	
 	//find wiimotes
@@ -17,4 +17,8 @@ wiimote** findWiimote(){
 	else{
 		return 0;
 	}
+}
+
+void close_wiimotes(wiimote** wm){
+	
 }

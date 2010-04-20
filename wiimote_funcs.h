@@ -3,7 +3,13 @@
 
 #include <wiiuse.h>
 
-wiimote** findWiimote();
+
+
+//find the 
+wiimote** find_wiimote(int num);
+
+
+
 
 
 #endif /* end of include guard: GESTURE_WIIMOTE */
