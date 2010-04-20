@@ -25,7 +25,7 @@ queue* init_buffer(int c){
 }
 
 void push(cell *c, queue *q){
-	if(q->curr_offset+1 >= q->capacity){
+	if(q->curr_offset >= q->capacity){
 		//loop around
 		q->curr_offset = 0;
 	}

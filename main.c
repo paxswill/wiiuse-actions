@@ -11,7 +11,7 @@ int main (int argc, char const *argv[])
 	
 	printf("\nOk, now test the buffer\n");
 	queue *q = init_buffer(5);
-	for(int i = 1; i < 6; ++i){
+	for(int i = 1; i <= 6; ++i){
 		cell *c = (cell*)malloc(sizeof(cell));
 		c->x_accel = (double)i;
 		c->y_accel = (double)i;
