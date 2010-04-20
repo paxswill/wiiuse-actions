@@ -24,22 +24,40 @@ queue* init(int c){
 	return to_return;
 }
 
-cell* pop(queue *q){
-	
-}
-
 void push(cell *c, queue *q){
-	
+	if(q->curr_offset+1 >= q->capacity){
+		//loop around
+		q->curr_offset = 0;
+	}
+	cell* mem_to_assign = q->queue_mem + (q->curr_offset);
+	mem_to_assign = c;
 }
 
 cell* peek(queue *q){
+	int offset;
+	if(q->curr_offset == 0){
+		//loop back
+		offset = 0;
+	}else{
+		//go back one
+		offset = q->curr_offset - 1;
+	}
+	//offset-1 as offset points to the next memory address to erase
+	return q->queue_mem + offset;
 }
 
-cell peek_b(queue *q, int back_num){
+cell* peek_b(queue *q, int back_num){
+	int back = back_num % q->capacity; //so we don't keep looping back
+	if(back > q->curr_offset){
+		//we loop backwards
+		
+	}
+	
 	
 }
 
-void print(queue *q){
+void print_buffer(queue *q){
+	//run through the buffer, printing the values
 	printf("(x, y, z)\n");
 	for(int i = 0; i < q->capacity; ++i){
 		printf("(%f, %f, %f)\n", q->queue_mem[i].x_accel, q->queue_mem[i].y_accel, q->queue_mem[i].z_accel);

@@ -17,9 +17,7 @@ typedef struct queue_t{
 } queue;
 
 //initialization function
-queue* init(int capacity);
-//add stuff
-cell* pop(queue *q);
+queue* init_buffer(int capacity);
 //get stuff
 void push(cell *c, queue *q);
 
@@ -27,7 +25,8 @@ cell* pop(queue *q);
 
 cell* peek(queue *q);
 
-cell peek_b(queue *q, int back_num);
+cell* peek_b(queue *q, int back_num);
 
+void print_buffer(queue *q);
 
 #endif /* end of include guard: GESTURE_BUFFER */
