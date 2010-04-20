@@ -10,7 +10,6 @@
 int main (int argc, char const *argv[])
 {
 	//printf("Hello, time to test out wiiuse, connecting\n");
-	//find_wiimote(1);
 	wiimote** wm;
 	int num_wiimotes = 1;
 	wm = find_wiimotes(num_wiimotes);

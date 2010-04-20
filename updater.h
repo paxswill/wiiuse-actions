@@ -4,6 +4,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "wiimote_funcs.h"
 #include "buffer.h"
@@ -11,6 +12,8 @@
 typedef struct callback_t{
 	int (*handle_print)(const char*, ...);
 	//TODO: add a mutex
+	//technically not a callback, but only one arg for pthreads...
+	poll_wiimote_arg wm_arg;
 } callback;
 
 void start_updating(callback *c);
