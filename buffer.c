@@ -29,8 +29,7 @@ void push(cell *c, queue *q){
 		//loop around
 		q->curr_offset = 0;
 	}
-	cell* mem_to_assign = q->queue_mem + (q->curr_offset);
-	mem_to_assign = c;
+	q->queue_mem[q->curr_offset++] = *c;
 }
 
 cell* peek(queue *q){
