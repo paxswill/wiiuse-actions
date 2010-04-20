@@ -8,6 +8,11 @@ wiimote** find_wiimotes(int num){
 	
 	//find wiimotes
 	int numFound = wiiuse_find(wm, maxWiimotes, 5);
+	//any found?
+	if(!numFound){
+		printf("No wiimotes found\n");
+		return NULL;
+	}
 	
 	//connect to the wiimote(s)
 	if(wiiuse_connect(wm, maxWiimotes)){

@@ -11,6 +11,18 @@ int main (int argc, char const *argv[])
 {
 	//printf("Hello, time to test out wiiuse, connecting\n");
 	//find_wiimote(1);
+	wiimote** wm;
+	int num_wiimotes = 1;
+	wm = find_wiimotes(num_wiimotes);
+	if(wm == NULL){
+		printf("Error in connecting. exiting\n");
+		exit(-2);
+	}
+	run_polling = 1; //true
+	//set up the wm_arg
+	poll_wiimote_arg wm_arg;
+	wm_arg.num_wm = num_wiimotes;
+	wm_arg.wm = wm;
 	
 	//Now to pull the wiimote and the buffer togehter in an updater thread
 	callback cb;

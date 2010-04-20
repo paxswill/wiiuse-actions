@@ -8,10 +8,6 @@ void start_updating(callback *c){
 	//make a buffer
 	queue *q = init_buffer(400);
 	
-	//open a wiimote
-	wiimote** wm;
-	int num_wiimotes = 1;
-	wm = find_wiimotes(num_wiimotes);
 	
 }
 
