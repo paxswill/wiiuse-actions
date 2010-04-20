@@ -3,7 +3,7 @@ all: main.o wiimote_funcs.o buffer.o updater.o
 
 # Main
 main.o: main.c
-	clang -std=c99 -Wall -g -c main.c -o main.o
+	clang -pthread -std=c99 -Wall -g -c main.c -o main.o
 
 # The wiimote wrapper functions
 wiimote_funcs.o: wiimote_funcs.c

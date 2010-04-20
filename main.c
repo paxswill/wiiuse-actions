@@ -1,24 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <pthread.h>
+#include <unistd.h>
 
 #include "wiimote_funcs.h"
 #include "buffer.h"
+#include "updater.h"
 
 int main (int argc, char const *argv[])
 {
 	//printf("Hello, time to test out wiiuse, connecting\n");
 	//find_wiimote(1);
 	
-	printf("\nOk, now test the buffer\n");
-	queue *q = init_buffer(22);
-	for(int i = 1; i <= 21673; ++i){
-		cell *c = (cell*)malloc(sizeof(cell));
-		c->x_accel = (double)i;
-		c->y_accel = (double)i;
-		c->z_accel = (double)i;
-		push(c, q);
+	//Now to pull the wiimote and the buffer togehter in an updater thread
+	callback cb;
+	register_print(&cb, &printf);
+	pthread_t updater_thread;
+	int rc = pthread_create(&updater_thread, NULL, start_updating, &cb);
+	if(rc){
+		fprintf(stderr, "Error in making the updater thread, Error#:%d\n", rc);
+		exit(-1);
 	}
-	print_buffer(q);
+	sleep(10);
 	
 	return 0;
 }
