@@ -1,5 +1,5 @@
 all: main.o wiimote_funcs.o buffer.o updater.o
-	clang -lm -lwiiuse -g main.o wiimote_funcs.o buffer.o updater.o -o wiiuse-basic
+	clang -lm -lwiiuse -pthread -g main.o wiimote_funcs.o buffer.o updater.o -o wiiuse-basic
 
 # Main
 main.o: main.c
@@ -15,7 +15,7 @@ buffer.o: buffer.h buffer.c
 
 # The updater
 updater.o: updater.h updater.c
-	clang -std=c99 -Wall -g -c updater.c -o updater.o
+	clang -std=c99 -Wall -pthread -g -c updater.c -o updater.o
 
 
 # Runs make on the VM on my machine
