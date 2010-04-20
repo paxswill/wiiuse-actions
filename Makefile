@@ -1,5 +1,5 @@
-all: main.o wiimote_funcs.o buffer.o
-	clang -lm -lwiiuse -g main.o wiimote_funcs.o buffer.o -o wiiuse-basic
+all: main.o wiimote_funcs.o buffer.o updater.o
+	clang -lm -lwiiuse -g main.o wiimote_funcs.o buffer.o updater.o -o wiiuse-basic
 
 # Main
 main.o: main.c
@@ -12,6 +12,11 @@ wiimote_funcs.o: wiimote_funcs.c
 # The low-latency buffer
 buffer.o: buffer.h buffer.c
 	clang -std=c99 -Wall -g -c buffer.c -o buffer.o
+
+# The updater
+updater.o: updater.h updater.c
+	clang -std=c99 -Wall -g -c updater.c -o updater.o
+
 
 # Runs make on the VM on my machine
 remote:
