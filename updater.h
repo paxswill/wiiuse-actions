@@ -16,6 +16,11 @@ typedef struct callback_t{
 	poll_wiimote_arg wm_arg;
 } callback;
 
+typedef struct watcher_t{
+	queue *q;
+	callback* c
+} watcher;
+
 void start_updating(callback *c);
 
 void register_print(callback* c, int (*handle_print)(const char*, ...));

@@ -33,8 +33,8 @@ void start_updating(callback *c){
 	}
 	
 	//wait a bit, then stop the thread
-	sleep(10);
-	run_polling = 0;
+	//sleep(15);
+	//run_polling = 0;
 	
 	//clear the attribute and wait
 	pthread_attr_destroy(&attr);

@@ -3,6 +3,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
+
 
 typedef struct cell_t{
 	double x_accel;
@@ -45,5 +47,8 @@ cell* peek(queue *q);
 cell* peek_b(queue *q, int back_num);
 
 void print_buffer(queue *q);
+
+int did_jump(queue* w);
+
 
 #endif /* end of include guard: GESTURE_BUFFER */

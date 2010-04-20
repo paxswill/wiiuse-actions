@@ -51,6 +51,7 @@ void poll_wiimote(poll_wiimote_arg *wm_arg){
 						c -> y_accel = (wm_arg->wm[i] -> gforce.y);
 						c -> z_accel = (wm_arg->wm[i] -> gforce.z);
 						push(c, wm_arg->q);
+						did_jump(wm_arg->q);
 						//printf("(%f, %f, %f)\n", c -> x_accel, c -> y_accel, c -> z_accel);
 						break;
 					}

@@ -26,6 +26,11 @@ remote:
 rclean:
 	ssh -p 2222 localhost 'cd /mnt/hgfs/CS350/wiiuse-basic/; make clean'
 
+
+#Optimize the hell out of this
+fast:
+	gcc -std=c99 -O3 -lm -lwiiuse -pthread main.c wiimote_funcs.c buffer.c updater.c -o wiiuse-fast
+
 # Clean up
 clean:
 	rm *.o
