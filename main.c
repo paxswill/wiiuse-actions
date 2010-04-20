@@ -24,16 +24,26 @@ int main (int argc, char const *argv[])
 	wm_arg.num_wm = num_wiimotes;
 	wm_arg.wm = wm;
 	
-	//Now to pull the wiimote and the buffer togehter in an updater thread
+	//Now to pull the wiimote and the buffer together in an updater thread
 	callback cb;
+	cb.wm_arg = wm_arg;
 	register_print(&cb, &printf);
+	//start making the thread
 	pthread_t updater_thread;
-	int rc = pthread_create(&updater_thread, NULL, start_updating, &cb);
+	//make it joinable
+	pthread_attr_t attr;
+	pthread_attr_init(&attr);
+	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+	//detach the thread
+	int rc = pthread_create(&updater_thread, &attr, start_updating, (void*) &cb);
 	if(rc){
 		fprintf(stderr, "Error in making the updater thread, Error#:%d\n", rc);
 		exit(-1);
 	}
-	sleep(10);
+	
+	//clear the attribute and wait
+	pthread_attr_destroy(&attr);
+	pthread_join(updater_thread, NULL);
 	
 	return 0;
 }
