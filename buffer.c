@@ -7,10 +7,10 @@ performance of the program, so we're using a fixed length queue
 that uses a preallocated bank of memory
 */ 
 
-queue* init(int c){
-	queue* to_return;
+queue* init_buffer(int c){
+	queue *to_return = (queue*)malloc(sizeof(queue));
 	//allocate the memory
-	to_return -> queue_mem = (cell*)malloc(sizeof(cell) * c);
+	(to_return -> queue_mem) = (cell*)malloc(sizeof(cell) * c);
 	//check to make sure it was allocated (malloc returns NULL when it fails)
 	if(to_return -> queue_mem == NULL){
 		//failure
